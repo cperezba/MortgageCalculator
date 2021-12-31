@@ -12,9 +12,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
 
-        double principal = (double) userPrompt("Principal ($1k - $1M): ", 1_000, 1_000_000);
-        double annualRate = (double) userPrompt("Annual Interest Rate (1 - 30): ", 1, 30);
-        double periodInYrs = (double) userPrompt("Period(Years) (1 - 30): ", 1, 30);
+        double principal = (double) Console.userPrompt("Principal ($1k - $1M): ", 1_000, 1_000_000);
+        double annualRate = (double) Console.userPrompt("Annual Interest Rate (1 - 30): ", 1, 30);
+        double periodInYrs = (double) Console.userPrompt("Period(Years) (1 - 30): ", 1, 30);
 
 
         printMortgage(principal, annualRate, periodInYrs);
@@ -40,19 +40,6 @@ public class Main {
         };
     }
 
-
-    public static double userPrompt(String message, int min, int max) {
-        Scanner scanner = new Scanner(System.in);
-        double value;
-        while (true) {
-            System.out.print(message);
-            value = scanner.nextDouble();
-            if (value >= min && value <= max)
-                break;
-            System.out.print("Enter a number between " + min + " and " + max + ".\n");
-        }
-        return value;
-    }
 
     public static double calculateMortgage(double principal, double annualRate, double periodInYrs) {
         final double monthlyInterest = annualRate / PERCENT / MONTHS_IN_YEAR;
